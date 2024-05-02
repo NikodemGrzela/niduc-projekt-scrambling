@@ -8,13 +8,17 @@ class Scrambler:
 def xor_scramble(signal):
     key = input("Enter key: ")
     scrambled_signal = ""
+    k=0
     for i in range(len(signal)):
+
         # XOR each bit of the signal with the corresponding bit of the key
-        if signal[i] == key[i]:
+        if signal[i] == key[k]:
             scrambled_signal += '0'
         else:
             scrambled_signal += '1'
-
+        k+=1
+        if k==len(key):
+            k=0
     return scrambled_signal
 
 def show_menu():
