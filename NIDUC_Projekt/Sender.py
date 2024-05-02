@@ -1,15 +1,18 @@
 import random
-
+from Scrambler import Scrambler
 class Sender:
     def __init__(self):
         pass
 
     def send_data(self):
+        scrambler = Scrambler()
         self.data = generate_data()
-        return self.data
+        self.signal_after_scrambling = scrambler.scramble(self.data)
+        return self.data + "," + self.signal_after_scrambling
 
     def print_data(self):
-        print(self.data)
+        print("Sender:")
+        print("generated: ",self.data, " after scrambling ", self.signal_after_scrambling)
 
 
 
