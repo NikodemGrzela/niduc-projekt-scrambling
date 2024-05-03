@@ -2,18 +2,18 @@ import random
 
 class Channel:
     def __init__(self,sender,receiver):
-        pass
+        self.noise_signal = None
+        self.signal_after_scrambling = None
     def receive(self,signal):
-        self.signal = signal.split(',')[0]
-        self.signal_after_scrambling = signal.split(',')[1]
+        self.signal_after_scrambling = signal
     def send(self):
         error_chance = calculate_error(self.signal_after_scrambling)
         self.noise_signal = generate_noise(self.signal_after_scrambling, error_chance)
-        return self.signal + "," + self.signal_after_scrambling + "," + self.noise_signal
+        return self.noise_signal
 
     def print_data(self):
         print("Channel:")
-        print("generated: ", self.signal, "generated,scrambled:", self.signal_after_scrambling, " scrambled,error: ", self.noise_signal)
+        print("Scrambled,error: ", self.noise_signal)
 
 def calculate_error(signal):
     zeros_count = 0
