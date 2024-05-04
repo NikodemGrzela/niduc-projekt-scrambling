@@ -15,7 +15,7 @@ class Sender:
 
     def print_data(self):
         print("Sender:")
-        print("generated: ", self.data, " after scrambling ", self.signal_after_scrambling)
+        print("generated: ", self.data, " after scrambling, key ", self.signal_after_scrambling)
 
 
 def generate_data():
