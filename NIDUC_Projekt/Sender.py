@@ -17,6 +17,8 @@ class Sender:
         print("Sender:")
         print("generated: ", self.data, " after scrambling, key ", self.signal_after_scrambling)
 
+    def get_signal(self):
+        return self.data
 
 def generate_data():
     #Ask user for 0/1 amount, length
