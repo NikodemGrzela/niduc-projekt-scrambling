@@ -1,22 +1,26 @@
-from Sender import Sender
-from Receiver import Receiver
 from Channel import Channel
+from Receiver import Receiver
+from Sender import Sender
 
 
 def main():
-    while True:
-        sender = Sender()
-        receiver = Receiver()
-        channel = Channel(sender,receiver)
-        channel.receive(sender.send_data())
-        receiver.receive_data(channel.send())
-        sender.print_data()
-        channel.print_data()
-        receiver.print_data()
+    sender = Sender()
+    receiver = Receiver()
+    channel = Channel()
 
+    signal_length = int(input("Enter signal length:"))
+    number_of_zeros = int(input("Enter number of zeros: "))
 
+    sent_signal = sender.send_data(signal_length, number_of_zeros)
+    sender.print_data()
+
+    channel.receive(sent_signal)
+    received_signal = channel.send()
+    channel.print_data()
+
+    receiver.receive_data(received_signal)
+    receiver.print_data()
 
 
 if __name__ == '__main__':
     main()
-
