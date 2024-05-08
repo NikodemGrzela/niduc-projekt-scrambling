@@ -42,7 +42,7 @@ class Scrambler:
     def xor_descramble(self,signal,key):
         descrambled_signal = ""
         k = 0
-        print(len(signal))
+
         for i in range(len(signal)):
 
             # XOR each bit of the signal with the corresponding bit of the key
