@@ -1,5 +1,3 @@
-import random
-
 from Scrambler import Scrambler
 
 
@@ -13,13 +11,11 @@ class Receiver:
         self.received = signal.split(',')[0]
         self.key = signal.split(',')[1]
 
-        # Scramble data
         scrambler = Scrambler()
-        self.signal_after_descrambling = scrambler.xor_descramble(self.received,self.key)
+        scrambler.signal = self.received
+        scrambler.key = self.key
+        self.signal_after_descrambling = scrambler.xor_scramble()
 
     def print_data(self):
         print("Receiver:")
         print("Descrambled: ", self.signal_after_descrambling, " Received key: ", self.key)
-
-
-
