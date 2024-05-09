@@ -10,7 +10,8 @@ class Channel:
         self.key = signal.split(',')[1]
     def send(self):
         error_chance = calculate_error(self.signal_after_scrambling)
-        self.noise_signal = generate_noise(self.signal_after_scrambling, error_chance) + ',' + generate_noise(self.key, error_chance)
+        error_chance_key= calculate_error(self.key)
+        self.noise_signal = generate_noise(self.signal_after_scrambling, error_chance) + ',' + generate_noise(self.key, error_chance_key)
         return self.noise_signal
 
     def print_data(self):

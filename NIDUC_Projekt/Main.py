@@ -10,10 +10,8 @@ def main():
         channel = Channel(sender,receiver)
         channel.receive(sender.send_data())
         receiver.receive_data(channel.send())
-        sender.print_data()
-        channel.print_data()
-        receiver.print_data()
 
+        receiver.compare(sender.get_signal())
 
 
 

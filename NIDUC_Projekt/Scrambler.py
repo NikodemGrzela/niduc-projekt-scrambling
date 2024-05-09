@@ -8,7 +8,7 @@ class Scrambler:
 
     def scramble(self, signal):
         self.signal = signal
-        self.key = generate_key(signal)
+        self.key = generate_key(256)
         return self.choose() + ',' + self.key
 
     def choose(self):
@@ -42,6 +42,7 @@ class Scrambler:
     def xor_descramble(self,signal,key):
         descrambled_signal = ""
         k = 0
+
         for i in range(len(signal)):
 
             # XOR each bit of the signal with the corresponding bit of the key
@@ -66,6 +67,7 @@ def show_menu():
 
 
 def generate_key(signal):
-    length = len(signal)
+    length = signal
     binary_string = ''.join(str(random.randint(0, 1)) for _ in range(length))
     return binary_string
+
