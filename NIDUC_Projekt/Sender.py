@@ -1,5 +1,5 @@
 import random
-from Scrambler import Scrambler
+from NIDUC_Projekt.XORKeyScrambler import XORKeyScrambler
 
 
 class Sender:
@@ -8,7 +8,7 @@ class Sender:
         self.signal_after_scrambling = None
 
     def send_data(self):
-        scrambler = Scrambler()
+        scrambler = XORKeyScrambler()
         self.data = generate_data()
         self.signal_after_scrambling = scrambler.scramble(self.data)
         return self.signal_after_scrambling

@@ -1,6 +1,6 @@
 import random
 
-from Scrambler import Scrambler
+from NIDUC_Projekt.XORKeyScrambler import XORKeyScrambler
 
 
 class Receiver:
@@ -14,7 +14,7 @@ class Receiver:
         self.key = signal.split(',')[1]
 
         # Scramble data
-        scrambler = Scrambler()
+        scrambler = XORKeyScrambler()
         self.signal_after_descrambling = scrambler.xor_descramble(self.received,self.key)
 
     def print_data(self):
