@@ -1,22 +1,23 @@
 import random
+from utils import signal_to_string
 
 class Channel:
-    def __init__(self,sender,receiver):
-        self.key = None
+    def __init__(self):
         self.noise_signal = None
         self.signal_after_scrambling = None
-    def receive(self,signal):
-        self.signal_after_scrambling = signal.split(',')[0]
-        self.key = signal.split(',')[1]
-    def send(self):
+
+    def receive_data(self,signal):
+        self.signal_after_scrambling = signal
+
+    def send_data(self):
         error_chance = calculate_error(self.signal_after_scrambling)
-        error_chance_key= calculate_error(self.key)
-        self.noise_signal = generate_noise(self.signal_after_scrambling, error_chance) + ',' + generate_noise(self.key, error_chance_key)
+        self.noise_signal = generate_noise(self.signal_after_scrambling, error_chance)
         return self.noise_signal
 
     def print_data(self):
         print("Channel:")
-        print("Scrambled with error, key with error: ", self.noise_signal)
+        print("Signal with introduced error: " + signal_to_string(self.noise_signal))
+        print()
 
 def calculate_error(signal):
     zeros_count = 0
@@ -24,7 +25,7 @@ def calculate_error(signal):
 
     # count zeros
     for bit in signal:
-        if bit == '0':
+        if bit == 0:
             zeros_count += 1
             max_zeros_count = max(max_zeros_count, zeros_count)
         else:
@@ -35,14 +36,13 @@ def calculate_error(signal):
 
 
 def generate_noise(signal, error_chance):
-    noisy_signal = ""
-    print(error_chance)
+    noisy_signal = []
     for bit in signal:
         if random.random() < error_chance:
-            if bit == '0':
-                noisy_signal += '1'
+            if bit == 0:
+                noisy_signal.append(1)
             else:
-                noisy_signal += '0'
+                noisy_signal.append(0)
         else:
-            noisy_signal += bit
+            noisy_signal.append(bit)
     return noisy_signal
