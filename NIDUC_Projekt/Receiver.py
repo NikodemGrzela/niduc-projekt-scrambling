@@ -1,25 +1,21 @@
 import random
-
-from NIDUC_Projekt.XORKeyScrambler import XORKeyScrambler
-
+from utils import signal_to_string
 
 class Receiver:
-    def __init__(self):
-        self.key = None
+    def __init__(self, descrambler):
+        self.signal = None
         self.signal_after_descrambling = None
-        self.received = None
+        self.descrambler = descrambler
 
     def receive_data(self, signal):
-        self.received = signal.split(',')[0]
-        self.key = signal.split(',')[1]
-
-        # Scramble data
-        scrambler = XORKeyScrambler()
-        self.signal_after_descrambling = scrambler.xor_descramble(self.received,self.key)
+        self.signal = signal
+        self.signal_after_descrambling = self.descrambler.descramble(signal)
 
     def print_data(self):
         print("Receiver:")
-        print("Descrambled: ", self.signal_after_descrambling, " Received key: ", self.key)
+        print("Received signal: " + signal_to_string(self.signal))
+        print("Signal after descrambling: " + signal_to_string(self.signal_after_descrambling))
+        print()
 
     def compare(self, signal2):
         equal = 0
