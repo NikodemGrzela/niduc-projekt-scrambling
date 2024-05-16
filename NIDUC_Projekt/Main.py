@@ -1,5 +1,6 @@
 from XORKeyScrambler import XORKeyScrambler
 from V34Scrambler import V34Scrambler
+from BLEScrambler import BLEScrambler
 from Sender import Sender
 from Receiver import Receiver
 from Channel import Channel
@@ -27,11 +28,14 @@ def get_scrambler():
     print("Provide scrambler type:")
     print("1. XOR with key")
     print("2. V.34")
+    print("3. BLE")
     choice = input()
     if choice == '1':
         return XORKeyScrambler()
     elif choice == '2':
         return V34Scrambler()
+    elif choice =='3':
+        return BLEScrambler()
     else:
         print("Incorrect value, defaulting to XOR scrambler")
         return XORKeyScrambler()
