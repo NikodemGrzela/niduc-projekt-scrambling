@@ -8,6 +8,7 @@ import random
 # Scrambling polega na wykonaniu operacji xor według schematu
 # Z wartościami w rejestrach o indeksach takich jak potęgi wielomianu
 # którym jest zdefiniowany scrambler.
+
 class V34Scrambler:
     def __init__(self):
         self.scramble_register = [random.randint(0, 1) for _ in range(23)]
