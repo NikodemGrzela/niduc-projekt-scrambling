@@ -5,13 +5,13 @@ import random
 
 class BLEScrambler:
     def __init__(self):
-        self.LFSR = [random.choice([0, 1]) for _ in range(7)]
-            
+        self.initialState = [random.choice([0, 1]) for _ in range(7)]
+        
        
    
     def scramble(self, signal):
         output_signal = []
-
+        self.LFSR = self.initialState.copy()
        
 
         
