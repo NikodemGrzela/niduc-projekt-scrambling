@@ -20,7 +20,7 @@ class Sender:
 
     def get_signal(self):
         return self.data
-
+    '''
     def generate_data(self):
         #Ask user for 0/1 amount, length
         signal_length = int(input("Enter signal length:"))
@@ -28,5 +28,12 @@ class Sender:
         number_of_ones = signal_length - number_of_zeros
         signal = [1] * number_of_ones + [0] * number_of_zeros
         random.shuffle(signal)
-
+        return signal
+    '''
+    
+    def generate_data(self, signal_length, percentage_ones):
+        number_of_ones = int(signal_length * percentage_ones / 100)
+        number_of_zeros = signal_length - number_of_ones
+        signal = [1] * number_of_ones + [0] * number_of_zeros
+        random.shuffle(signal)
         return signal
