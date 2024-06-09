@@ -13,7 +13,7 @@ def main():
         sender = Sender(scrambler)
         receiver = Receiver(scrambler)
         channel = Channel()
-        channel.receive_data(sender.send_data())
+        channel.receive_data(sender.send_signal())
         receiver.receive_data(channel.send_data())
 
         print("=========================")
