@@ -44,7 +44,7 @@ for length in signal_lengths:
 
             for _ in range(num_iterations):
                 # Generowanie sygnału
-                signal = generate_signal(length, percentage)
+                signal = sender.generate_data(length, percentage)
                 sender.data = signal
 
                 # Pomiar czasu scramblowania
