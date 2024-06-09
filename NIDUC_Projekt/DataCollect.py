@@ -29,15 +29,6 @@ results = pd.DataFrame(columns=['Scrambler', 'Signal Length', 'Percentage of One
 std_devs = pd.DataFrame(columns=['Scrambler', 'Signal Length', 'Percentage of Ones', 'Execution Time Std', 'Accuracy Std'])
 
 
-# Funkcja do generowania sygnału w zależnosci od ilości bitów '1' (tutaj żeby nie zmieniać w Sender)
-def generate_signal(length, ones_percentage):
-    number_of_ones = int(length * ones_percentage / 100)
-    number_of_zeros = length - number_of_ones
-    signal = [1] * number_of_ones + [0] * number_of_zeros
-    random.shuffle(signal)
-    return signal
-
-
 # Główna pętla do zbierania danych
 for length in signal_lengths:
     for percentage in percentages_of_ones:
