@@ -1,2 +1,5 @@
 PyCrypto
 pycryptodome
+matplotlib
+numpy
+pandas
