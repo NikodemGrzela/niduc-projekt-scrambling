@@ -17,9 +17,10 @@ class Receiver:
         print("Signal after descrambling: " + signal_to_string(self.signal_after_descrambling))
         print()
 
-    def compare(self, signal2):
+        def compare(self, signal2):
         equal = 0
         for i in range(len(self.signal_after_descrambling)):
             if self.signal_after_descrambling[i] == signal2[i]:
                 equal = equal + 1
-        print(equal / len(self.signal_after_descrambling) * 100)
+        correctness_percentage = equal / len(self.signal_after_descrambling) * 100
+        print(f"Correctness: {int(correctness_percentage)}%")
