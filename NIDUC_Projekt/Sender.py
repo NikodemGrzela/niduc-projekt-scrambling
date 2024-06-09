@@ -8,7 +8,10 @@ class Sender:
         self.scrambler = scrambler
 
     def send_data(self):
-        self.data = self.generate_data()
+        # Ask user for 0/1 amount, length
+        signal_length = int(input("Enter signal length:"))
+        percentage_ones = int(input("Enter percentage of ones: "))
+        self.data = self.generate_data(signal_length, percentage_ones)
         self.signal_after_scrambling = self.scrambler.scramble(self.data)
         return self.signal_after_scrambling
 
